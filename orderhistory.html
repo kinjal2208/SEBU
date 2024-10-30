@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Order History</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="assets/img/favicon.png" rel="icon">
+
+	<link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+	<link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+	<link href="assets/css/loginstyle.css" rel="stylesheet">
+  <link href="assets/css/orderhistory.css" rel="stylesheet">
+
+</head>
+<body>
+
+  <!-- ======= Header ======= -->
+	<header id="header" class="fixed-top d-flex align-items-center  header-transparent ">
+		<div class="headercontainer d-flex align-items-center justify-content-between">
+			<div class="logo">
+				<img src="assets/img/favicon.png" alt="LOGO">
+				<h1>SEBU</h1>
+			</div>
+			<div class="homebutton">
+				<ul>
+					<li><a class="nav-link" href="index.html"><i class="bi bi-house-fill"></i></a></li>
+				</ul>
+			</div>
+
+		</div>
+	</header><!-- End Header -->
+
+<!-- partial:index.partial.html -->
+<h1>Your Orders</h1>
+
+<div class="shopping-cart">
+  
+  <div class="column-labels">
+    <label class="product-image">Image</label>
+    <label class="product-details">Product</label>
+    <label class="product-price">Price</label>
+    <label class="product-quantity">Quantity</label>
+    <label class="product-removal">Remove</label>
+    <label class="product-line-price">Total</label>
+  </div>
+
+  <div class="product">
+    <div class="product-image">
+      <img src="assets/img/green-apple.png">
+    </div>
+    <div class="product-details">
+      <div class="product-title">Green Apple</div>
+      <p class="product-description">Apples are nutricious.Apples may be good for weight loss.Apples may be good for bone health.They're linked to a lowest risk of diabetes.</p>
+    </div>
+    <div class="product-price">99.00</div>
+    <div class="product-quantity">1
+    </div>
+    <div class="product-removal">
+      <button class="remove-product">
+        Delete
+      </button>
+    </div>
+    <div class="review"><a href="feedback.html"><input type="button" value="Write Review"/></a></div>
+    <div class="product-line-price">99.00</div>
+    <div class="track">
+      <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Ordered</span> </div>
+      <div class="step active"> <span class="icon"> <i class="fa fa-user"></i> </span> <span class="text">Shipped</span> </div>
+      <div class="step"> <span class="icon"> <i class="fa fa-truck"></i> </span> <span class="text"> On the way </span> </div>
+      <div class="step"> <span class="icon"> <i class="fa fa-box"></i> </span> <span class="text">Delivered</span> </div>
+    </div>
+  </div>
+ 
+
+  <div class="product">
+    <div class="product-image">
+      <img src="assets/img/strawberry-main.jpg">
+    </div>
+    <div class="product-details">
+      <div class="product-title">Strawberry</div>
+      <p class="product-description"></p>
+    </div>
+    <div class="product-price">80.00</div>
+    <div class="product-quantity">2
+    </div>
+    <div class="product-removal">
+      <button class="remove-product">
+        Delete
+      </button>
+    </div>
+    <div class="review"><a href="feedback.html"><input type="button" value="Write Review"/></a></div>
+    <div class="product-line-price">160.00</div>
+    <div class="track">
+      <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Ordered</span> </div>
+      <div class="step active"> <span class="icon"> <i class="fa fa-user"></i> </span> <span class="text">Shipped</span> </div>
+      <div class="step"> <span class="icon"> <i class="fa fa-truck"></i> </span> <span class="text"> On the way </span> </div>
+      <div class="step"> <span class="icon"> <i class="fa fa-box"></i> </span> <span class="text">Delivered</span> </div>
+    </div>
+  </div>
+
+  <div class="clear">
+     <div class="clear-mast">
+        <button class="clear-master">
+              Clear all
+         </button>
+      </div>
+    </div>
+  
+</div>
+
+	<!-- ======= Footer ======= -->
+	<footer id="footer">
+		<div>
+			<h3>SEBU</h3>
+			<div class="copyright">
+				&copy; Copyright <strong><span>SEBU</span></strong>. All Rights Reserved
+			</div>
+		</div>
+	</footer><!-- End Footer -->
+
+<!-- partial -->
+  <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script><script  src="assets/js/script.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,118 @@
+.containermain{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    height: 100%;
+    margin-top: 5rem;
+    width: 100%;
+}
+
+.vendor{
+    display: flex;
+    width: 25rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    word-wrap:normal;
+    transition: all 0.4s ease-in-out;
+    box-shadow: 0px 0px 15px 1px grey;
+    border-radius: 15px;
+}
+
+.vendor:hover {
+    color: #020035;
+    transform: translateY(-10px);
+    box-shadow: 0px 0px 20px 1px #003153;
+  }
+
+.vendor_details{
+    width: 15rem;
+    word-wrap: break-word;
+    height: 100%;
+    margin: 0px;
+}
+
+.vendor_details .vendor_shop_name{
+    text-align: center;
+    margin-top: 10px;
+    height: 30px;
+    margin-bottom: 5px;
+}
+
+.vendor_details .description{
+    margin-left: 15px;
+    height: 45px;
+    margin-top: 0;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+}
+
+.vendor_details button{
+    width: 11rem;
+}
+
+.image{
+    height: 10rem;
+    border-radius: 15px 0px 0px 15px;
+    width: 10rem;
+}
+
+.vendor .reting_icon{
+    width: 3rem;
+    margin: -7px 0px 0px 10rem;
+    color: white;
+    background-color: green;
+}
+
+.fa{
+    margin-left: 4px;
+    margin-top: 2px;
+}
+
+.vendor_details .button{
+    text-align: center;
+    margin-top: 5px;
+  }
+  
+  .vendor_details .button a{
+    width: 75%;
+    margin: 0px;
+    text-decoration: none;
+    border: none;
+    color: #007ba7;
+    border-radius: 15px;
+     font-family: 'Poppins', sans-serif;
+     cursor: pointer;
+     transition: .5s;
+  }
+  .vendor_details .button a:hover{
+   color: #020035;
+   }
+
+   /*--------------------------------------------------------------
+# General
+--------------------------------------------------------------*/
+body {
+    font-family: "Open Sans", sans-serif;
+    color: #444444;
+  }
+  
+  a {
+    color: #007BA7;
+    text-decoration: none;
+  }
+  
+  a:hover {
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Raleway", sans-serif;
+  }

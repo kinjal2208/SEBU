@@ -1,0 +1,40 @@
+<?php
+session_start();
+
+if (isset($_POST["sub_cat_submit"])) {
+    include('config.html');
+    
+    $name = $_POST['sub_cat_name'];
+    $category = $_POST['category'];
+
+    $sql = "SELECT * FROM sub_category WHERE sub_cat_name='$name'";
+    $stmt = sqlsrv_query( $conn, $sql );
+    $count=0;
+    while ( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {
+          $count+=1;
+    }
+
+    if($count>0){
+        echo " <script>
+            alert('Sub-Category Exist ! ');
+            location.replace('add_sub_category.html');
+        </script>";
+    }
+    else{
+        $sql = "SELECT * FROM category WHERE cat_name='$category'";
+    $stmt = sqlsrv_query( $conn, $sql );
+    while ( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {
+          $cat_id= $row['cat_id'];
+    }
+
+        $sql = "INSERT INTO sub_category VALUES ('$cat_id','$name')";
+        $stmt= sqlsrv_query($conn, $sql);
+        if( $stmt ) {
+            echo " <script>
+                    location.replace('admin_profile_sub_category.html');
+                    </script>";
+       }
+    }
+}
+
+?>

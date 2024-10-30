@@ -1,0 +1,67 @@
+<?php
+include('config.html');
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Category</title>
+    
+    <!-- Favicons -->
+    <link href="assets/img/favicon.png" rel="icon">
+    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <link href="vendor/animate.css/animate.min.css" rel="stylesheet">
+    <link href="vendor/aos/aos.css" rel="stylesheet">
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+    <link href="assets/css/add_category.css" rel="stylesheet">
+
+    <link
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+        rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="title">Add Category</div>
+        <div class="content">
+          <form action="process_add_sub_category.html" method="POST">
+            <div class="user-details">
+              <div class="input-box">
+                <span class="details">Select Category</span>
+                <div class="drop-down">
+                <select name="category" id="category">
+                  <?php $sql = "SELECT * FROM category WHERE status='active'";
+                  $stmt = sqlsrv_query( $conn, $sql );
+                  while ( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) { ?>
+                    <option value="<?php echo $row['cat_name'] ?>"><?php echo $row['cat_name'] ?></option>
+                  <?php } ?>
+                </select>
+              </div>
+              </div>
+              <div class="input-box">
+                <span class="details">Sub-Category Name</span>
+                <input type="text" name="sub_cat_name" placeholder="Enter the Category" required>
+              </div>
+              <div class="input-box">
+                <span class="details">Upload Image:</span>
+                <input style="border: none;" type="file"  required/>
+              </div>
+            <div class="button">
+              <input type="submit" name="sub_cat_submit" value="Add">
+            </div></div>
+          </form>
+        </div>
+      </div>
+    
+</body>
+</html>

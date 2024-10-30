@@ -1,0 +1,54 @@
+<?php
+
+
+if (isset($_POST["submit"])) {
+    include('config.html');
+    $b_name = $_POST['b_name'];
+    $name = $_POST['name'];
+    $b_add = $_POST['b_add'];
+    $b_mobile = $_POST['b_mobile'];
+    $mobile = $_POST['mobile'];
+    $email = $_POST['email'];
+    $proof = $_POST['proof'];
+    $proof_no = $_POST['proof_no'];
+    $password = $_POST['password'];
+    $cpassword = $_POST['cpassword'];
+    
+    if(strcmp($password, $cpassword)){
+        echo " <script>
+            alert('both password are must be same');
+            location.replace('VendorRegistration.html');
+        </script>";
+}
+else{
+ 
+    $sql = "SELECT * FROM vendor WHERE b_email='$email' OR mobile='$mobile' OR b_mobile='$b_mobile'";
+    $stmt = sqlsrv_query( $conn, $sql );
+    $count=0;
+    while ( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {
+          $count+=1;
+    }
+
+    if($count>0){
+        echo " <script>
+            alert('Already Registered Please Login');
+            location.replace('login.html');
+        </script>";
+    }
+    else{
+        $new_hash_password = password_hash($password, PASSWORD_DEFAULT);
+        $sql = "INSERT INTO vendor VALUES ('$b_name', '$name', '$b_add', '$b_mobile', '$email', '$mobile', '$proof', '$proof_no', '$new_hash_password', getdate())";
+        $stmt= sqlsrv_query($conn, $sql);
+        if( $stmt ) {
+            $sql = "SELECT * FROM vendor WHERE mobile='$mobile'";
+    $stmt = sqlsrv_query( $conn, $sql );
+    $usr = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC);
+    $_SESSION['user'] = $usr['mobile'];
+            echo " <script>
+                    location.replace('index.html');
+                    </script>";
+       }
+    }
+}
+}
+?>

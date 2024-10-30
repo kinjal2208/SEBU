@@ -1,0 +1,157 @@
+<?php
+include('config.html');
+session_start();
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Profile</title>
+
+    <!-- Favicons -->
+    <link href="assets/img/favicon.png" rel="icon">
+    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+        rel="stylesheet">
+
+        <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+        <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+        <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+        <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+        <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+        <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+        <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+      
+        <link href="assets/css/style.css" rel="stylesheet">
+        <link href="assets/css/profile_main.css" rel="stylesheet">
+        <link href="assets/css/category_in_vendor.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top d-flex align-items-center  header-nottransparent ">
+        <div class="container d-flex align-items-center justify-content-between">
+
+            <div class="logo">
+                <img src="assets\img\favicon.png" style="margin-left: -20px;" alt="LOGO">
+                <h1>SEBU</h1>
+            </div>
+            <nav id="navbar" class="navbar">
+                <ul>
+                    <li><a class="nav-link" href="index.html"><i class="bi bi-house-fill"></i></a></li>
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav>
+
+        </div>
+    </header><!-- End Header -->
+
+    <main id="main">
+        <div class="button-section">
+            <div class="profile-icon">
+                <div class="admin-name">
+                    <i class="bi bi-person-circle icon" aria-hidden="true"></i>
+                    <h3><?php if(isset($_SESSION['user'])) {
+                        $us  = sqlsrv_query($conn, "SELECT * FROM admin WHERE mobile='" . $_SESSION['user'] . "'");
+                        $user = sqlsrv_fetch_array( $us, SQLSRV_FETCH_ASSOC);
+                        echo $user['name']; }?></h3>
+                </div>
+            </div>
+            <div class="buttons">
+            <div class="profile-button"><a href="admin_profile_dashboard.html"><button class="main-button" style="background-color: #020035; color: #fff;">Dashboard</button></a></div>
+            <div class="profile-button"><a href="admin_profile_main.html"><button class="main-button">Vendor Details</button></a></div>
+            <div class="profile-button"><a href="admin_profile_category.html"><button class="main-button">Edit Category</button></a></div>
+            <div class="profile-button"><a href="admin_profile_sub_category.html"><button class="main-button">Edit Sub-Category</button></a></div>
+            <div class="profile-button"><a href="admin_profile_edit.html"><button class="main-button">Edit Profile</button></a></div>
+            <div class="profile-button"><a href="admin_profile_password.html"><button class="main-button">Change Password</button></a></div>
+            <div class="profile-button"><a><button class="main-button" onclick="logout_con()">Logout</button></a></div>
+            </div>
+        </div>
+        <div class="main-section">
+            <div class="containermain">
+                <div class="category_in_vendor">
+                    <i class="bi bi-person-check image" style="font-size: 6rem; margin-top: 10px; margin-left: 50px;"></i>
+                    <div class="category_details">
+                        <p class="category_shop_name" style="font-size: 40px;"><b><?php $sql = "SELECT * FROM customer";
+                            $stmt = sqlsrv_query( $conn, $sql );
+                            $count=0;
+                            while ( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {
+                                  $count+=1;
+                            } echo $count;?></b></p>
+                        <p class="description" style="margin-top: 30px; text-align: center; margin-bottom: 0px;">Registed Customer</p>
+                    </div> 
+                </div>              
+                <div class="category_in_vendor">
+                    <i class="bi bi-people image" style="font-size: 6rem; margin-top: 10px; margin-left: 50px;"></i>
+                    <div class="category_details">
+                        <p class="category_shop_name" style="font-size: 40px;"><b><?php $sql = "SELECT * FROM vendor";
+                            $stmt = sqlsrv_query( $conn, $sql );
+                            $count=0;
+                            while ( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {
+                                  $count+=1;
+                            } echo $count;?></b></p>
+                        <p class="description" style="margin-top: 30px; text-align: center; margin-bottom: 0px;">Total Seller</p>
+                    </div> 
+                </div>              
+                <div class="category_in_vendor">
+                    <i class="bi bi-bag-check image" style="font-size: 6rem; margin-top: 10px; margin-left: 50px;"></i>
+                    <div class="category_details">
+                        <p class="category_shop_name" style="font-size: 40px;"><b><?php $sql = "SELECT * FROM sub_category";
+                            $stmt = sqlsrv_query( $conn, $sql );
+                            $count=0;
+                            while ( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {
+                                  $count+=1;
+                            } echo $count;?></b></p>
+                        <p class="description" style="margin-top: 30px; text-align: center; margin-bottom: 0px;">Total Sub-Category</p>
+                    </div> 
+                </div>              
+                <div class="category_in_vendor">
+                    <i class="bi bi-basket image" style="font-size: 6rem; margin-top: 10px; margin-left: 50px;"></i>
+                    <div class="category_details">
+                        <p class="category_shop_name" style="font-size: 40px;"><b><?php $sql = "SELECT * FROM items";
+                            $stmt = sqlsrv_query( $conn, $sql );
+                            $count=0;
+                            while ( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {
+                                  $count+=1;
+                            } echo $count;?></b></p>
+                        <p class="description" style="margin-top: 30px; text-align: center; margin-bottom: 0px;">Total Item</p>
+                    </div> 
+                </div>              
+            </div>
+        </div>
+    </main>
+
+    <!-- ======= Footer ======= -->
+    <footer id="footer">
+        <div class="container">
+            <h3>SEBU</h3>
+            <div class="copyright">
+                &copy; Copyright <strong><span>SEBU</span></strong>. All Rights Reserved
+            </div>
+        </div>
+    </footer><!-- End Footer -->
+
+    <script>
+        function logout_con() {
+            var r = confirm("Are you sure , you want to logout ?");
+            if (r == true) {
+                window.location.href = "logout.html";
+            } else {
+                window.location.href = "admin_profile_dashboard.html";
+            }
+        }
+    </script>
+
+</body>
+
+</html>

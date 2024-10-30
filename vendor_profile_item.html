@@ -1,0 +1,172 @@
+<?php
+include('config.html');
+session_start();
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vendor Profile</title>
+
+    <!-- Favicons -->
+    <link href="assets/img/favicon.png" rel="icon">
+    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+        rel="stylesheet">
+
+    <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+    <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="assets/css/profile_main.css" rel="stylesheet">
+    <link href="assets/css/vendor_in_category.css" rel="stylesheet">
+    <link href="assets/css/vendor_edit_category.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top d-flex align-items-center  header-nottransparent ">
+        <div class="container d-flex align-items-center justify-content-between">
+
+            <div class="logo">
+                <img src="assets\img\favicon.png" alt="LOGO">
+                <h1>SEBU</h1>
+            </div>
+            <nav class="navbar">
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2 rounded colorchangeinput" type="search" placeholder="Search"
+                        aria-label="Search">
+                    <button class="btn btn-outline-light colorchange" type="submit">Search</button>
+                </form>
+            </nav>
+            <nav id="navbar" class="navbar">
+                <ul>
+                    <li><a class="nav-link" href="index.html"><i class="bi bi-house-fill"></i></a></li>
+                    <li><a class="nav-link" href="cart.html"><i class="bi bi-cart4"></i></a></li>
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav>
+
+        </div>
+    </header><!-- End Header -->
+
+    <main id="main">
+        <div class="button-section">
+            <div class="profile-icon">
+                <div class="admin-name">
+                    <i class="bi bi-person-circle icon" aria-hidden="true"></i>
+                    <h3><?php if(isset($_SESSION['user'])) {
+                        $us  = sqlsrv_query($conn, "SELECT * FROM vendor WHERE mobile='" . $_SESSION['user'] . "'");
+                        $user = sqlsrv_fetch_array( $us, SQLSRV_FETCH_ASSOC);
+                        echo $user['name']; }?></h3>
+                </div>
+            </div>
+            <div class="buttons">
+            <div class="profile-button"><a href="vendor_profile_order.html"><button class="main-button">Order</button></a></div>
+            <div class="profile-button"><a href="vendor_profile_main.html"><button class="main-button">Order History</button></a></div>
+            <div class="profile-button"><a href="vendor_profile_item.html"><button class="main-button" style="background-color: #020035; color: #fff;">Edit Item</button></a></div>
+            <div class="profile-button"><a href="vendor_profile_edit.html"><button class="main-button">Edit Profile</button></a></div>
+            <div class="profile-button"><a href="vendor_profile_password.html"><button class="main-button">Change Password</button></a></div>
+            <div class="profile-button"><a><button class="main-button" onclick="delete_con()">Delete Account</button></a></div>
+            <div class="profile-button"><a><button class="main-button" onclick="logout_con()">Logout</button></a></div>
+            </div>
+        </div>
+        <div class="main-section">
+            <div class="containermain">
+                <div class="category_in_vendor">
+                    <img src="assets/img/green-apple.png" alt="image" class="image"/>
+                    <div class="category_details">
+                        <p class="category_shop_name"><b>Apple</b></p>
+                        <div class="button1">
+                           <a href="product.html"><button class="button2"><b>Disable</b></button></a>
+                        </div>
+                        <div class="button">
+                          <a href="product.html"><button><b>Remove</b></button></a>
+                          </div>
+                    </div>
+                </div>
+                <div class="category_in_vendor">
+                    <img src="assets/img/strawberry-main.jpg" alt="image" class="image"/>
+                    <div class="category_details">
+                        <p class="category_shop_name"><b>Strawberry</b></p>
+                        <div class="button1">
+                            <a href="product.html"><button class="button2"><b>Disable</b></button></a>
+                         </div>
+                        <div class="button">
+                          <a href="product.html"><button><b>Remove</b></button></a>
+                          </div>
+                    </div>
+                </div>
+                <div class="category_in_vendor">
+                    <img src="assets/img/capsicum-green-main.jpg" alt="image" class="image"/>
+                    <div class="category_details">
+                        <p class="category_shop_name"><b>Capsicum</b></p>
+                        <div class="button1">
+                            <a href="product.html"><button class="button2"><b>Disable</b></button></a>
+                         </div>
+                        <div class="button">
+                          <a href="product.html"><button><b>Remove</b></button></a>
+                          </div>
+                    </div>
+                </div>
+                <div class="category_in_vendor">
+                    <img src="assets/img/plus.png" alt="image" class="image"/>
+                    <div class="category_details">
+                        <div class="button">
+                          <a href="add_item.html"><button><b>Add</b></button></a>
+                          </div>
+                    </div>
+                </div>
+
+               </div>
+
+        </div>
+    </main>
+
+    <!-- ======= Footer ======= -->
+    <footer id="footer">
+        <div class="container">
+            <h3>SEBU</h3>
+            <div class="copyright">
+                &copy; Copyright <strong><span>SEBU</span></strong>. All Rights Reserved
+            </div>
+        </div>
+    </footer><!-- End Footer -->
+
+    <script>
+        function delete_con() {
+            var r = confirm("Are you sure , you want to delete your account?");
+            if (r == true) {
+                window.location.href = "process_delete_account.html";
+            } else {
+                window.location.href = "vendor_profile_main.html";
+            }
+        }
+        function logout_con() {
+            var r = confirm("Are you sure , you want to logout ?");
+            if (r == true) {
+                window.location.href = "logout.html";
+            } else {
+                window.location.href = "vendor_profile_main.html";
+            }
+        }
+    </script>
+    
+</body>
+
+</html>

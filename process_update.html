@@ -1,0 +1,96 @@
+<?php
+
+include('config.html');
+
+session_start();
+
+if (isset($_POST["update_submit"])) {
+
+    $mobile = $_SESSION['user'];
+
+    $sql = "SELECT * FROM customer WHERE mobile='$mobile'";
+    $stmt = sqlsrv_query( $conn, $sql );
+    $usr = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC);
+
+        if (!$usr) {
+
+            $sql = "SELECT * FROM admin WHERE mobile='$mobile'";
+            $stmt = sqlsrv_query( $conn, $sql );
+            $usr = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC);
+
+            if (!$usr) {
+                
+                $sql = "SELECT * FROM vendor WHERE mobile='$mobile'";
+                $stmt = sqlsrv_query( $conn, $sql );
+                $usr = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC);
+                
+                $b_name = $_POST['b_name'];
+                $name = $_POST['name'];
+                $b_add = $_POST['b_add'];
+                $b_mobile = $_POST['b_mobile'];
+                $u_mobile = $_POST['mobile'];
+                $email = $_POST['email'];
+                $proof = $_POST['proof'];
+                $proof_no = $_POST['proof_no'];
+ 
+                $sql = "UPDATE vendor SET b_name = '$b_name', name = '$name', b_address= '$b_add', mobile= '$u_mobile',b_mobile='$b_mobile', b_idproof='$proof',idproof_number='$proof_no', b_email= '$email' WHERE mobile = '$mobile'";
+                $stmt = sqlsrv_query( $conn, $sql );
+    
+                if ($stmt) {
+                    $sql = "SELECT * FROM vendor WHERE mobile='$u_mobile'";
+                    $stmt = sqlsrv_query( $conn, $sql );
+                    $usr = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC);
+                    $_SESSION['user'] = $usr['mobile'];
+                    echo " <script>
+                            alert('Your data has been updated successfully!!');
+                            location.replace('vendor_profile_edit.html');
+                            </script>";
+                }
+
+            } else {
+                
+                $name = $_POST['name'];
+                $u_mobile = $_POST['mobile'];
+ 
+                $sql = "UPDATE admin SET name = '$name', mobile='$u_mobile' WHERE mobile = '$mobile'";
+                $stmt = sqlsrv_query( $conn, $sql );
+    
+                if ($stmt) {
+                    $sql = "SELECT * FROM admin WHERE mobile='$u_mobile'";
+                    $stmt = sqlsrv_query( $conn, $sql );
+                    $usr = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC);
+                    $_SESSION['user'] = $usr['mobile'];
+                    echo " <script>
+                            alert('Your data has been updated successfully!!');
+                            location.replace('admin_profile_edit.html');
+                            </script>";
+                }
+        }
+    } else {
+        $name = $_POST['name'];
+        $address = $_POST['address'];
+        $u_mobile = $_POST['mobile'];
+        $email = $_POST['email'];
+        $id = $_SESSION['user'];
+     
+        $sql = "UPDATE customer SET name = '$name', address= '$address', mobile= '$u_mobile', email= '$email' WHERE mobile = '$mobile'";
+        $stmt = sqlsrv_query( $conn, $sql );
+        
+        if ($stmt) {
+            $sql = "SELECT * FROM customer WHERE mobile='$u_mobile'";
+            $stmt = sqlsrv_query( $conn, $sql );
+            $usr = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC);
+            $_SESSION['user'] = $usr['mobile'];
+            echo " <script>
+                    alert('Your data has been updated successfully!!');
+                    location.replace('consumer_profile_edit.html');
+                    </script>";
+        }
+        }
+    }
+ else {
+    echo " <script>
+            alert('Please fill data');
+            location.replace('index.html');
+        </script>";
+}

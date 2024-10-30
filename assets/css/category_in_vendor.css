@@ -1,0 +1,115 @@
+.containermain{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  height: 100%;
+  margin-top: 5rem;
+  width: 100%;
+}
+
+.category_in_vendor{
+  display: flex;
+  width: 25rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  word-wrap:normal;
+  transition: all 0.4s ease-in-out;
+  box-shadow: 0px 0px 15px 1px grey;
+  border-radius: 15px;
+}
+
+.category_details{
+  width: 15rem;
+  flex-flow: column;
+    display: flex;
+    justify-content: center;
+    word-wrap: break-word;
+  height: 100%;
+  margin: 0px;
+}
+
+.category_details .category_shop_name{
+  text-align: center;
+  margin-top: 0;
+  padding-top: 5px;
+  margin-bottom: 5px;
+  height: 40px;
+}
+
+.category_details .description{
+  margin-left: 15px;
+  margin-top: 0;
+  height: 45px;
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+}
+
+.category_details button{
+  width: 111px;
+  border: none;
+  background-color: #007BA7;
+  transition-duration: 0.5s;
+  color: #fff;
+  border-radius: 5px;
+}
+
+.category_details button:hover{
+  background-color: #020035;
+}
+
+.image{
+  height: 10rem;
+  border-radius: 15px 0px 0px 15px;
+  width: 10rem;
+}
+
+.category .reting_icon{
+  width: 3rem;
+  margin: -7px 0px 0px 10rem;
+  color: white;
+  background-color: green;
+}
+
+.fa{
+  margin-left: 4px;
+  margin-top: 2px;
+}
+
+.category_details .button{
+  text-align: center;
+  margin-top: 5px;
+}
+
+.reting_icon{
+   width: 52px;
+   font-family: "Open Sans", sans-serif;
+    padding: 0;
+    margin-left: 10.5rem;
+    color: white;
+    margin-top: -29px;
+    text-align: center;
+    margin-bottom: 5px;
+}
+ /*--------------------------------------------------------------
+# General
+--------------------------------------------------------------*/
+body {
+  font-family: "Open Sans", sans-serif;
+  color: #444444;
+}
+
+a {
+  color: #007BA7;
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Raleway", sans-serif;
+}

@@ -1,0 +1,200 @@
+<div class='alert alert-success' role='alert'>
+            We've sent an OTP to the registered email Please enter it below to complete verification.
+          </div>
+
+
+          $to = "vrajeshaghera2002@gmail.com";
+            $subject = "Registration OTP";
+            $from=$email;
+            $msg="<html>
+                <body>
+                <h2>Hello $name</h2>
+                <h3>Welcome to SEBU</h3>
+                <p>Your otp is <b>12345</b></p>
+                </br></br>
+                <h1>Thank You!!</h1>
+                </body>
+                </html>";
+            $headers = "From: $from";
+            
+            mail($to,$subject,$msg,$headers);
+            echo "Email successfully sent.";
+
+
+             if (!$result) {
+        echo "Error database: " . mysqli_connect_error();
+    } else {
+            $to = "vrajeshaghera2002@gmail.com";
+            $subject = "Registration OTP";
+            $from=$email;
+            $msg="<html>
+                <body>
+                <h2>Hello $name</h2>
+                <h3>Welcome to SEBU</h3>
+                <p>Your otp is <b>12345</b></p>
+                </br></br>
+                <h1>Thank You!!</h1>
+                </body>
+                </html>";
+            $headers = "From: $from";
+            
+            mail($to,$subject,$msg,$headers);
+            echo "Email successfully sent.";
+            }
+            header ("location: forgotpasswordotp.html");
+    }
+
+
+    <?php if(isset($_SESSION['user'])) { ?><a class="nav-link" href="cart.html"><?php echo Cart ?></a>
+          <?php } else { ?><a class="nav-link" onclick="carterror()">Cart</a><?php } ?>
+
+          <script>
+    function carterror(){
+      let c=confirm('You are not registered! If you want to registered than press YES')
+      if (c == true) {
+                window.location.href = "login.html";
+            } else {
+                window.location.href = "index.html";
+            }
+    }
+  </script>
+
+  <ul>
+        <li><i class="bi bi-cart4 carticon"></i></li>
+        <li><?php if(isset($_SESSION['user'])) { ?><a class="nav-link" href="cart.html"><?php echo Cart ?></a>
+          <?php } else { ?><a class="nav-link" onclick="carterror()">Cart</a><?php } ?></li>
+        <li><i class="bi bi-person-circle signinicon"></i></li>
+        <li><?php if(isset($_SESSION['user'])) {
+          $us  = sqlsrv_query($conn, "SELECT * FROM customer WHERE c_id='" . $_SESSION['user'] . "'");
+          $user = sqlsrv_fetch_array( $us, SQLSRV_FETCH_ASSOC); ?><a href="consumer_profile_main.html"><?php echo $user['name']; ?></a>
+          <?php } else { ?><a href="login.html">Login</a><?php } ?></li>
+      </ul>
+
+      <?php if(isset($_SESSION['user'])) {
+          $us  = sqlsrv_query($conn, "SELECT * FROM customer WHERE c_id='" . $_SESSION['user'] . "'");
+          $user = sqlsrv_fetch_array( $us, SQLSRV_FETCH_ASSOC); ?><a href="consumer_profile_main.html"><?php echo $user['name']; ?></a>
+          <?php } else { ?><a href="login.html">Login</a><?php } ?>
+
+           <script>
+            let c = confirm('Old password is wrong Please enter correct password!!\nDo you want forgot your password ? press OK');
+            if (c == true) {
+                location.replace('forgotpasswordnumber.html');
+            } else {
+                location.replace('consumer_profile_password.html');
+            }
+            </script>
+
+
+            <?php
+
+include('config.html');
+
+session_start();
+
+if (isset($_POST["login_submit"])) {
+
+    $mobile = $_POST['login_mobile'];
+    $password = $_POST['login_password'];
+
+    $new_hash_password = password_hash($password, PASSWORD_DEFAULT);
+    $verify = password_verify($password, $new_hash_password);
+
+    $sql = "SELECT * FROM customer WHERE mobile='$mobile'";
+    $stmt = sqlsrv_query( $conn, $sql );
+     
+    if(!$stmt){
+        $sql = "SELECT * FROM vendor WHERE mobile='$mobile'";
+        $stmt = sqlsrv_query( $conn, $sql );
+
+        if(!$stmt){
+            $sql = "SELECT * FROM admin WHERE mobile='$mobile'";
+        $stmt = sqlsrv_query( $conn, $sql );
+        if($stmt){
+            $usr = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC);
+            if (!$usr) {
+                echo " <script>
+                alert('Mobile Number was wrong!!');
+                location.replace('login.html');
+            </script>";
+            } else {
+                if(password_verify($password, $usr['password'])){
+                $_SESSION['user'] = $usr['a_id'];
+                echo " <script>
+                        location.replace('index.html') 
+                        </script>";
+                        }
+                        else{
+                            echo " <script>
+                                alert('Password was wrong!!');
+                                location.replace('login.html');
+                            </script>";
+                        }
+            }
+        }
+    }
+    else{
+        $usr = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC);
+        if (!$usr) {
+            echo " <script>
+            alert('Mobile Number was wrong!!');
+            location.replace('login.html');
+        </script>";
+        } else {
+            if(password_verify($password, $usr['password'])){
+            $_SESSION['user'] = $usr['v_id'];
+            echo " <script>
+                    location.replace('index.html') 
+                    </script>";
+                    }
+                    else{
+                        echo " <script>
+                            alert('Password was wrong!!');
+                            location.replace('login.html');
+                        </script>";
+                    }
+        }        
+    }
+    }
+}
+else{
+
+        $usr = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC);
+        if (!$usr) {
+            echo " <script>
+            alert('Mobile Number was wrong!!');
+            location.replace('login.html');
+        </script>";
+        } else {
+            if(password_verify($password, $usr['password'])){
+            $_SESSION['user'] = $usr['c_id'];
+            echo " <script>
+                    location.replace('index.html');
+                    </script>";
+                    }
+                    else{
+                        echo " <script>
+                            alert('Password was wrong!!');
+                            location.replace('login.html');
+                        </script>";
+                    }
+        }
+}
+
+
+<div class="category_in_vendor">
+                    <?php $sql = "SELECT * FROM sub_category";
+                    $stmt = sqlsrv_query( $conn, $sql );
+                    $count=0;
+                    while ( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) { ?>
+                        <img src="assets/img/<?php echo $row['sub_cat_name'];?>.jpg" alt="image" class="image"/>
+                        <div class="category_details">
+                            <p class="category_shop_name"><b><?php echo $row['sub_cat_name'];?></b></p>
+                            <div class="button1">
+                                <a href="product.html"><button class="button2"><b>Disable</b></button></a>
+                             </div>
+                            <div class="button">
+                              <a href="product.html"><button><b>Remove</b></button></a>
+                              </div>
+                        </div>
+                    <?php } ?>
+                </div>

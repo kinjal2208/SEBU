@@ -1,0 +1,14 @@
+<?php
+
+include('config.html');
+
+
+        $id = $_GET['sub_cat_id'];
+
+        $sql = "DELETE FROM sub_category WHERE sub_cat_id = '$id'";
+        $stmt = sqlsrv_query( $conn, $sql );
+        if($stmt){
+            echo " <script>
+                location.replace('admin_profile_sub_category.html');
+                </script>";
+        }

@@ -1,0 +1,24 @@
+<?php
+
+include('config.html');
+
+session_start();
+
+    $id = $_GET['sub_cat_id'];
+    $sql = "SELECT * FROM sub_category WHERE sub_cat_id='$id'";
+    $stmt = sqlsrv_query( $conn, $sql );
+    $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC);
+    
+    if($row['status']=='active'){
+        $sql = "UPDATE sub_category SET status='disable' WHERE sub_cat_id = '$id'";
+        $stmt = sqlsrv_query( $conn, $sql );
+        if($stmt){
+            header('location:admin_profile_sub_category.html');
+        }
+    } else {
+        $sql = "UPDATE sub_category SET status='active' WHERE sub_cat_id = '$id'";
+        $stmt = sqlsrv_query( $conn, $sql );
+        if($stmt){
+            header('location:admin_profile_sub_category.html');
+        }
+    }

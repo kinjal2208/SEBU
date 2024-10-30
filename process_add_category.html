@@ -1,0 +1,34 @@
+<?php
+session_start();
+
+if (isset($_POST["cat_submit"])) {
+    include('config.html');
+    
+    $name = $_POST['cat_name'];
+
+    $sql = "SELECT * FROM category WHERE cat_name='$name'";
+    $stmt = sqlsrv_query( $conn, $sql );
+    $count=0;
+    while ( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {
+          $count+=1;
+    }
+
+    if($count>0){
+        echo " <script>
+            alert('Category Exist ! ');
+            location.replace('add_category.html');
+        </script>";
+    }
+    else{
+
+        $sql = "INSERT INTO category VALUES ('$name','active')";
+        $stmt= sqlsrv_query($conn, $sql);
+        if( $stmt ) {
+            echo " <script>
+                    location.replace('admin_profile_category.html');
+                    </script>";
+        }
+    }
+}
+
+?>

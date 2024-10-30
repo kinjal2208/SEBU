@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vendor Registration</title>
+    <link href="assets/img/favicon.png" rel="icon">
+    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+    <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+    <link href="assets\css\vendor_registrationstyle.css" rel="stylesheet">
+
+    <link
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+        rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="title">Sign Up</div>
+        <div class="content">
+          <form action="process_registration_vendor.html" method="POST" enctype="multipart/form-data">
+            <div class="user-details">
+              <div class="input-box">
+                <span class="details">Business Name</span>
+                <input type="text" id="b_name" name="b_name" placeholder="Enter your Business name" required>
+              </div>
+              <div class="input-box">
+                <span class="details">Service Provider Name</span>
+                <input type="text" id="name" name="name" placeholder="Enter Service Provider name" pattern="[A-Za-z,' ']{0,}" title="Name contain only latter" required>
+              </div>
+              <div class="input-box">
+                <span class="details">Business Address</span>
+                <input type="text" id="b_add" name="b_add" placeholder="Enter your business Address" required>
+              </div>
+              <div class="input-box">
+                <span class="details">Business Contact</span>
+                <input type="text" id="b_mobile" name="b_mobile" placeholder="Enter your business contact" pattern="[0-9]{0,}" title="Contact number should be digit only otherwise not valid" required>
+              </div>
+              <div class="input-box">
+                <span class="details">E-mail:</span>
+                <input type="email" id="email" name="email" placeholder="Enter your e-mail id" required>
+              </div>
+              <div class="input-box">
+                <span class="details">Mobile Number</span>
+                <input type="text" id="mobile" name="mobile" maxlength="10" placeholder="Enter your mobile number" pattern="[0-9]{10}" title="Mobile number should be 10 digit only otherwise not valid" required>
+              </div>
+              <div class="input-box">
+                <span class="details">Business Id-Proof</span>
+                <div class="drop-down">
+                <select name="proof" id="proof">
+                  <option value="Aadhar_No">Aadhar No.</option>
+                  <option value="Pancard_No">Pancard No.</option>
+                  <option value="GST_No">GST No.</option>
+                  <option value="Gumasta_license_No">Gumasta license No.</option>
+                </select>
+              </div>
+              </div>
+              <div class="input-box">
+                <span class="details">Business Id-proof No.</span>
+                <input type="text" id="proof_no" name="proof_no" placeholder="Enter your Id-proof number" required>
+              </div>
+              <div class="input-box">
+                <span class="details">Password</span>
+                <input type="password" name="password" id="password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,15}$" title="Password should contain minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character" placeholder="Enter your password" required>
+              </div>
+              <div class="input-box">
+                <span class="details">Re-enter Password</span>
+                <input type="password" name="cpassword" id="cpassword" placeholder="Enter your password again" required>
+              </div>
+              <div>
+                <span style="font-weight: 500;">Upload your shop image:  </span>
+                <input type="file" name="image" id="image" placeholder="Choose" required>
+              </div>
+              
+            </div>
+            <div class="button">
+              <input type="submit" id="submit" name="submit" value="Register">
+            </div>
+          </form>
+        </div>
+      </div>
+      <script src="assets/js/password_checking.js"></script>
+</body>
+</html>

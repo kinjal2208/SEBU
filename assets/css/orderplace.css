@@ -1,0 +1,293 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700');
+
+  /*--------------------------------------------------------------
+# Header
+--------------------------------------------------------------*/
+
+#header .headercontainer{
+  display: flex;
+  padding-top: 20px;
+  justify-content: center;
+ }
+ 
+ #header {
+     width: 100%;
+     position: sticky;
+     top:0;
+     height: 70px;
+     margin-top: -15px;
+     transition: all 0.5s;
+     z-index: 9;
+     transition: all 0.5s;
+     background: #007BA7;
+   }
+   
+   #header.header-transparent {
+     background: #007BA7;
+   }
+ 
+   
+   #header .logo {
+     display: flex;
+   margin-left: 40.5rem;
+   margin-right: 35rem;
+   }
+   
+   #header .logo h1 {
+     font-size: 28px;
+     margin: 0 0 0 6px;
+     padding: 0;
+     line-height: 1;
+     font-weight: 700;
+     letter-spacing: 1px;
+   }
+   
+   #header .logo h1 {
+     color: #fff;
+   }
+   
+   #header .logo img {
+     padding: 0;
+     margin: 0;
+     max-height: 27px;
+   }
+ /*--------------------------------------------------------------
+ # Navigation Menu
+ --------------------------------------------------------------*/
+ /**
+ * Desktop Navigation 
+ */
+  ul {
+     margin: 0;
+     padding: 0;
+     display: flex;
+     list-style: none;
+     align-items: center;
+   }
+   
+   li {
+     position: relative;
+   }
+   
+  .nav-link,
+   .nav-link:focus {
+   display: flex;
+     height: 24px;
+     align-items: center;
+     justify-content: center;
+     padding: 2px 15px 2px 14px;
+     margin-left: 10px;
+     font-size: 20px;
+     color: #fff;
+     white-space: nowrap;
+     transition: 0.3s;
+     border-radius: 50px;
+     align-content: center;
+   }
+   
+  .nav-link:hover {
+     background: #020035;
+   color: #fff;
+   }
+ 
+   .nav-link .homename{
+   font-size: 12px;
+   margin-left: 4px;
+   font-family: initial;
+   }
+   .homebutton{
+     margin-right: 15px;
+   }
+   
+   @media (max-width: 1366px) {
+     .navbar .dropdown .dropdown ul {
+       left: -90%;
+     }
+   
+     .navbar .dropdown .dropdown:hover>ul {
+       left: -100%;
+     }
+   }
+   
+
+   
+body{
+  background: url('http://all4desktop.com/data_images/original/4236532-background-images.jpg');
+  font-family: 'Roboto Condensed', sans-serif;
+  color: #000;
+  margin: 1% 0;
+}
+.container{
+  width: 100%;
+  height: 75%;
+  padding: 0px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 15px 1px #020035;
+  margin-right: auto;
+  margin-top: 3rem;
+  margin-left: auto;
+  margin-bottom: 3rem;
+}
+@media (min-width: 1200px)
+{
+  .container{
+    max-width: 1140px;
+  }
+}
+.orderplace-d-flex{
+  display: flex;
+  flex-direction: row;
+  background: transparent;
+  border-radius: 0 0 5px 5px;
+  padding: 25px;
+}
+form{
+  flex: 4;
+  margin: 0px;
+  display: flex;
+}
+.Yorder{
+  flex: 2;
+}
+.title{
+  background: -webkit-gradient(linear, left top, right bottom, color-stop(0, #4682b4), color-stop(100, #020035));
+  background: -moz-linear-gradient(top left, #4682b4 0%, #020035 100%);
+  background: -ms-linear-gradient(top left, #4682b4 0%, #020035 100%);
+  background: -o-linear-gradient(top left, #4682b4 0%, #020035 100%);
+  background: linear-gradient(to bottom right, #4682b4 0%, #020035 100%);
+  border-radius:5px 5px 0 0 ;
+  padding: 20px;
+  color: #f6f6f6;
+}
+h2{
+  margin: 0;
+  padding-left: 15px; 
+}
+.required{
+  color: red;
+}
+label, table{
+  display: block;
+  margin: 15px;
+}
+label>span{
+  float: left;
+  width: 25%;
+  margin-top: 12px;
+  padding-right: 10px;
+}
+
+select{
+  width: 72%;
+  height: 45px;
+  padding: 5px 10px;
+  margin-bottom: 10px;
+}
+.Yorder{
+  margin-top: 15px;
+  height: 340px;
+  padding: 0px 20px 20px 20px;
+  text-align: center;
+  border: 1px solid #dadada;
+}
+table{
+  margin: 0px 0px 0px 33px;
+  padding: 0;
+}
+th{
+  border-bottom: 1px solid #dadada;
+  padding: 10px 0;
+}
+tr>td:nth-child(1){
+  text-align: left;
+  color: grey;
+}
+tr>td:nth-child(2){
+  text-align: right;
+  color: grey;
+}
+td{
+  border-bottom: 1px solid grey;
+  padding: 25px 25px 25px 0;
+}
+
+p{
+  display: block;
+  color: #888;
+  margin: 0;
+  padding-left: 25px;
+}
+.Yorder>div{
+  padding: 0px 0px; 
+}
+
+.button{
+  width: 80%;
+  margin-top: 10px;
+  padding: 10px;
+  transition-duration: 0.5s;
+  border: none;
+  border-radius: 5px;
+  background: #007BA7;
+  color: #fff;
+  font-size: 15px;
+  font-weight: bold;
+}
+.button:hover{
+  cursor: pointer;
+  background: #020035;
+}
+
+  /*--------------------------------------------------------------
+# Footer
+--------------------------------------------------------------*/
+#footer {
+  background: #003153;
+  color: #fff;
+  font-size: 14px;
+  text-align: center;
+  padding: 30px 0;
+}
+
+#footer h3 {
+  font-size: 36px;
+  font-weight: 700;
+  color: #fff;
+  position: relative;
+  font-family: "Poppins", sans-serif;
+  padding: 0;
+  margin: 0 0 15px 0;
+}
+
+#footer p {
+  font-size: 15;
+  font-style: italic;
+  padding: 0;
+  margin: 0 0 40px 0;
+}
+
+#footer .copyright {
+  margin: 0 0 5px 0;
+}
+
+.orderplace-d-flex form label input:focus,
+.orderplace-d-flex form label input:valid{
+   border-radius: 10px;
+   border-color: #020035;
+}
+
+.orderplace-d-flex form label input{
+width: 70%;
+transition-duration: 0.5s;
+  height: 30px;
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin-bottom: 10px;
+  border: 1px solid grey;
+  color: darkgrey;
+}
+
+.orderplace-d-flex form .form{
+width: 64%;
+}
+
